@@ -3,13 +3,14 @@ module ThemesForRails
   module UrlHelpers
 
     extend ActiveSupport::Concern
-    
+    include ActionController::Helpers
+
     included do
-      helper_method :current_theme_stylesheet_path, 
-        :current_theme_javascript_path, 
+      helper_method :current_theme_stylesheet_path,
+        :current_theme_javascript_path,
         :current_theme_image_path
     end
-    
+
     def current_theme_stylesheet_path(asset)
       base_theme_stylesheet_path(:theme => self.theme_name, :asset => "#{asset}.css")
     end
